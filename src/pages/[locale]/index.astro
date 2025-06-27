@@ -6,6 +6,7 @@ import HeroSection from "../../components/main/hero-section";
 import LegendSection from "../../components/main/legend-section";
 import ProductSection from "../../components/main/product-section";
 import { locales } from "../../constants/pages";
+import StickyCardsPage from "../../components/animations/sticky-cards/StickyCardsPage.astro";
 
 export async function getStaticPaths() {
   return locales.map((locale) => ({
@@ -21,10 +22,11 @@ const dict = locale === "en" ? en : es;
   <section id="hero-section">
     <HeroSection {...dict.hero} />
   </section>
-  <section id="legend-section">
+  <StickyCardsPage/>
+  <!-- <section id="legend-section">
     <LegendSection {...dict.legend} />
   </section>
   <section id="product-section">
     <ProductSection client:load {...dict.productos} />
-  </section>
+  </section> -->
 </Layout>

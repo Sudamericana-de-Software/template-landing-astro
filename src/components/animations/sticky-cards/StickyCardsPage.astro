@@ -1,0 +1,51 @@
+---
+import Cards from "./Cards.astro";
+import Intro from "./Intro.astro";
+import Outro from "./Outro.astro";
+
+const introText = "We design spaces that don’t just exist.";
+const outroText = "Architecture reimagined for the virtual age.";
+
+const cards = [
+  {
+    title: "Curved Horizon",
+    description:
+      "A futuristic residence that plays with curvature and flow, blending bold geometry with natural topography.",
+    imageSrc: "https://cdnb.artstation.com/p/assets/images/images/089/451/325/large/feng-wei-c12-asset.jpg?1750980447",
+    marquee: [
+      "Design Beyond Boundaries",
+      "Built for Tomorrow",
+      "Real Impact",
+      "Digital Visions",
+    ],
+  },
+  {
+    title: "Glass Haven",
+    description:
+      "A sleek pavilion of pure transparency, openness and light, designed to dissolve into its environment.",
+    imageSrc: "https://cdnb.artstation.com/p/assets/images/images/089/117/585/large/darek-zabrocki-ps-the-waft-25-08.jpg?1750093689",
+  },
+  {
+    title: "Moss Cube",
+    description:
+      "A minimalist cube home crowned with a living moss dome, merging micro-architecture with ecological design.",
+    imageSrc: "https://cdnb.artstation.com/p/assets/images/images/089/117/589/large/darek-zabrocki-overview2-006-darekzabrocki.jpg?1750093694",
+  },
+  {
+    title: "Floating Shelter",
+    description:
+      "This design explores an ethereal structure perched on a grassy islet, seemingly hovering above water.",
+    imageSrc: "https://cdnb.artstation.com/p/assets/images/images/089/117/573/large/darek-zabrocki-ps-enclave-d1-shot3b-03-09.jpg?1750093666",
+  },
+];
+---
+
+<Intro text={introText} />
+<Cards cards={cards} />
+<Outro text={outroText} />
+<script >
+    import { setupStickyCardsAnimation } from "./stickyCards";
+    document.addEventListener("DOMContentLoaded", () => {
+        setupStickyCardsAnimation();
+    });
+</script>

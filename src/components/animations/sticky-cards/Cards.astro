@@ -1,0 +1,21 @@
+---
+// src/components/sticky-cards/Cards.astro
+import Card from "./Card.astro";
+
+interface CardData {
+  title: string;
+  description: string;
+  imageSrc: string;
+  marquee?: string[];
+}
+
+interface Props {
+  cards: CardData[];
+}
+
+const { cards } = Astro.props;
+---
+
+<section class="cards">
+  {cards.map((card) => <Card {...card} />)}
+</section>

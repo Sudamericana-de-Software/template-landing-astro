@@ -1,0 +1,38 @@
+---
+// src/components/sticky-cards/Intro.astro
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<section class="intro">
+  <h1>{text}</h1>
+</section>
+
+<style>
+.intro {
+  height: 100svh;
+  padding: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+.intro h1 {
+  width: 60%;
+  text-align: center;
+  line-height: 1.1;
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+}
+@media (max-width: 900px) {
+  .intro h1 {
+    width: 100%;
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+}
+</style>

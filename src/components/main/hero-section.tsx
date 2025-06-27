@@ -31,7 +31,7 @@ const heroStyles = container({
 export default function HeroSection(contenido: Content) {
     return (
         <section className={heroStyles}>
-            <div
+            {/* <div
                 className={stack({
                     flexDir: { base: "column", md: "row" },
                     alignItems: { base: "", md: "center" }
@@ -72,7 +72,51 @@ export default function HeroSection(contenido: Content) {
                 <p className={css({ display: { base: "block", md: "none" }, color: "text", transition: "all 0.2s" })}>
                     {contenido.description}
                 </p>
-            </div>
+            </div> */}
+
+        <div
+        className={css({
+          width: "100%",
+          height: "70vh",
+          bg: "blue",
+        })}
+        style={{ clipPath: "url(#myClip)" }}
+      >
+        HOLA
+      </div>
+
+      {/* SVG hidden pero accesible */}
+      <svg width="0" height="0">
+        <defs>
+          <clipPath id="myClip" clipPathUnits="objectBoundingBox">
+            <path d="
+                    M0.534164 0.178333
+    C0.545263 0.178333 0.55426 0.159679 0.55426 0.136667
+    V0.041667
+    C0.55426 0.018655 0.563258 0 0.574357 0
+    H0.598473
+    H0.78274
+    H0.979904
+    C0.991005 0 1 0.018655 1 0.041667
+    V0.958333
+    C1 0.981345 0.991005 1 0.979904 1
+    H0.020096
+    C0.008998 1 0 0.981345 0 0.958333
+    V0.5
+    V0.399167
+    C0 0.376155 0.008998 0.3575 0.020096 0.3575
+    H0.404341
+    C0.41544 0.3575 0.424437 0.338845 0.424437 0.315833
+    V0.22
+    C0.424437 0.196988 0.433435 0.178333 0.444534 0.178333
+    H0.534164
+    Z
+            " />
+          </clipPath>
+        </defs>
+      </svg>
+      
         </section>
     )
 }
+

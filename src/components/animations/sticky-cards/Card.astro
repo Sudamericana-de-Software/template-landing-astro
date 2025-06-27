@@ -1,0 +1,128 @@
+---
+// src/components/sticky-cards/Card.astro
+interface Props {
+  title: string;
+  description: string;
+  imageSrc: string;
+  marquee?: string[];
+}
+const { title, description, imageSrc, marquee = [] } = Astro.props;
+---
+
+<div class="card">
+  {marquee.length > 0 && (
+    <div class="card-marquee">
+      <div class="marquee">
+        {marquee.map((text) => <h1>{text}</h1>)}
+      </div>
+    </div>
+  )}
+  <div class="card-wrapper">
+    <div class="card-content">
+      <div class="card-title"><h1>{title}</h1></div>
+      <div class="card-description"><p>{description}</p></div>
+    </div>
+    <div class="card-img">
+      <img src={imageSrc} alt="" />
+    </div>
+  </div>
+</div>
+
+<style>
+.card {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 1.5em;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+.card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+.card-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 150px;
+  overflow: hidden;
+}
+.card-img img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transform: scale(2);
+}
+.card-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1;
+}
+.card-content .card-title {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.card-content .card-title h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  line-height: 1.25;
+}
+.card-content .card-description {
+  text-align: center;
+  width: 40%;
+  margin-bottom: 3em;
+  position: relative;
+  transform: translateX(40px);
+  opacity: 0;
+}
+.card-marquee {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+.card-marquee .marquee {
+  display: flex;
+}
+.card-marquee .marquee h1 {
+  white-space: nowrap;
+  font-size: 10vw;
+  font-weight: 600;
+  margin-right: 30px;
+}
+.char {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.char span {
+  transform: translateX(100%);
+  display: inline-block;
+  will-change: transform;
+}
+@media (max-width: 900px) {
+  .card-content .card-title h1 {
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+  .card-content .card-description {
+    width: 90%;
+  }
+}
+</style>
