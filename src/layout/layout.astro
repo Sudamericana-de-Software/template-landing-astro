@@ -24,7 +24,7 @@ const rubik = "--font-rubik";
     <ClientRouter />
   </head>
   <body
-    class={`${poppins} ${rubik} ${css({ bg: "bgColor", transition: "all 0.2s" })}`}
+    class={`${poppins} ${rubik} ${css({ bg: "colors.ui.bg.base", transition: "all 0.2s" })}`}
   >
     <Navbar client:load links={dict.links} />
     <main class={`scroller ${css({ minHeight: "100vh" })}`}>

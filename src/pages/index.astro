@@ -1,21 +1,51 @@
+<script is:inline>
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const getStoredTheme = () => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme");
+    }
+    return null;
+  };
+
+  const setStoredTheme = (theme) => {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("theme", theme);
+    }
+  };
+
+  const applyTheme = () => {
+    const stored = getStoredTheme();
+    const theme = stored || (prefersDark ? "dark" : "light");
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+    if (!stored) setStoredTheme(theme);
+  };
+
+  const observeThemeChanges = () => {
+    if (typeof localStorage === "undefined") return;
+    new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setStoredTheme(isDark ? "dark" : "light");
+    }).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  };
+
+  const detectLanguageAndRedirect = () => {
+    const userLang = navigator.language.startsWith("en") ? "en" : "es";
+    localStorage.setItem("len", userLang);
+    window.location.replace(`/${userLang}`);
+  };
+
+  applyTheme();
+  observeThemeChanges();
+  detectLanguageAndRedirect();
+</script>
+
 <html lang="en">
-    <head>
-        <meta http-equiv="refresh" content="0; URL=/es" />
-        <script is:inline>
-            const userLang = navigator.language.startsWith("en") ? "en" : "es";
-            window.location.replace(`/${userLang}`);
-            localStorage.setItem("len", userLang);
-            const prefersDark = window.matchMedia(
-                "(prefers-color-scheme: dark)",
-            ).matches;
-            const savedTheme = localStorage.getItem("theme");
-            if (!savedTheme) {
-                const theme = prefersDark ? "dark" : "light";
-                localStorage.setItem("theme", theme);
-                document.documentElement.classList.add(theme);
-            } else {
-                document.documentElement.classList.add(savedTheme);
-            }
-        </script>
-    </head>
+  <head>
+    <meta http-equiv="refresh" content="0; URL=/es" />
+  </head>
 </html>

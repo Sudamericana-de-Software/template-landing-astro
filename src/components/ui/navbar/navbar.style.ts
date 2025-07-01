@@ -5,14 +5,13 @@ export const containerStyles = css({
   position: 'fixed!',
   top: 0,
   zIndex: "100",
-  width: 'screen',
+  width: '100%',
   minHeight: '4rem',
   transition: 'all 0.2s ease',
-  paddingTop: '1rem',
-  paddingBottom: '1rem',
+  py: '1rem',
+  px: '2rem',
   backgroundColor: 'navbar',
   backdropFilter: "blur(20px)!",
-  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
 });
 
 export const navbarStyles = container({

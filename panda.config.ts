@@ -1,5 +1,6 @@
 import { defineConfig } from "@pandacss/dev";
-import { globalColors } from "./src/style/theme";
+import { colorsTokens, keyframes, animationStyles, shadowsTokens } from "./src/style/theme";
+import { typography } from "./src/style/tokens/typography";
 
 export default defineConfig({
   preflight: true,
@@ -8,9 +9,32 @@ export default defineConfig({
   theme: {
     extend: {
       semanticTokens: {
-        colors: { ...globalColors }
-      }
+        colors: { ...colorsTokens },
+        shadows: {
+          ...shadowsTokens
+        }
+      },
+      textStyles: { ...typography },
+      keyframes,
+      animationStyles
     },
   },
+  patterns: {
+    extend: {
+      container: {
+        transform(props) {
+          // Definimos nuevos valores predeterminados
+          return {
+            position: 'relative',
+            width: '100%',
+            maxWidth: 'calc(100vw - 100px)',
+            mx: 'auto',
+            ...props         // incluir cualquier otra propiedad pasada
+          }
+        },
+      }
+    }
+  },
+  jsxFramework: 'react',
   outdir: "styled-system",
 });
