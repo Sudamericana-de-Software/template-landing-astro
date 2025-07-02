@@ -1,106 +1,102 @@
-'use client';
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Check } from 'lucide-react';
-import { css, cva } from '../../../styled-system/css';
+import { css } from '../../../styled-system/css';
 
 
-export const selectTriggerStyles = cva({
-  base: {
-    transition: 'all 0.5s',
-    display: 'flex',
-    height: 'fit-content',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    whiteSpace: 'nowrap',
-    borderRadius: 'sm',
-    border: '1px solid',
-    borderColor: "navBorder",
-    color: "navText",
-    bg: 'transparent',
-    px: '.5rem',
-    py: '.1rem',
-    fontSize: 'sm',
-    boxShadow: 'sm',
-    gap: '.4rem',
-    cursor: 'pointer',
-    '&:focus': {
-      outline: 'none',
-      ring: '1px',
-      ringColor: 'ring',
-    },
-    '&:disabled': {
-      cursor: 'not-allowed',
-      opacity: 0.5,
-    },
-    '& > span': {
-      lineClamp: 1,
-    },
+export const selectTriggerStyles = css({
+  transition: 'background-color .15s ease, border-color .15s ease',
+  display: 'flex',
+  height: 'fit-content',
+  width: '100%',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  whiteSpace: 'nowrap',
+  borderRadius: 'sm',
+  border: '1px solid',
+  borderColor: "colors.ui.border.base",
+  color: "colors.ui.fg.base",
+  bg: 'colors.ui.bg.component',
+  px: '.5rem',
+  py: '.1rem',
+  fontSize: 'sm',
+  boxShadow: 'shadows.elevation-card-rest',
+  gap: '.4rem',
+  cursor: 'pointer',
+  '&:hover': {
+    background: 'colors.ui.bg.component.hover',
+    boxShadow: 'shadows.elevation-card-hover',
   },
-});
-
-export const selectContentStyles = cva({
-  base: {
-    position: 'absolute',
-    zIndex: 50,
-    top: '100%',
-    left: 0,
-    right: 0,
-    p: '.2rem',
-    maxHeight: '384px',
-    minWidth: 'fit-content',
-    overflow: 'auto',
-    borderRadius: 'sm',
-    border: '1px solid',
-    borderColor: 'border',
-    bg: { base: "white", _dark: "white" },
-    color: 'sasfGrey',
-    boxShadow: 'md',
-    mt: '4px',
-  },
-});
-
-export const selectItemStyles = cva({
-  base: {
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-    cursor: 'pointer',
-    userSelect: 'none',
-    alignItems: 'center',
-    borderRadius: 'sm',
-    py: '.2rem',
-    pl: '8px',
-    fontSize: 'sm',
+  '&:focus': {
     outline: 'none',
-    '&:hover': {
-      bg: 'red.200',
-      color: 'red.400',
-    },
-    '&[data-disabled]': {
-      pointerEvents: 'none',
-      opacity: 0.5,
-    },
+    boxShadow: 'shadows.borders-focus'
+  },
+  '&:disabled': {
+    cursor: 'not-allowed',
+    opacity: 0.5,
+    background: 'colors.ui.bg.disabled',
+    borderColor: 'colors.ui.border.base'
+  },
+  '& > span': {
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
   },
 });
 
-export const selectLabelStyles = cva({
-  base: {
-    px: '8px',
-    py: '6px',
-    fontSize: 'sm',
-    fontWeight: 'semibold',
+export const selectContentStyles = css({
+  position: 'absolute',
+  zIndex: 50,
+  top: '100%',
+  left: 0,
+  right: 0,
+  p: '.2rem',
+  maxHeight: '384px',
+  minWidth: 'fit-content',
+  overflow: 'auto',
+  borderRadius: 'sm',
+  border: '1px solid',
+  borderColor: 'colors.ui.border.base',
+  bg: 'colors.ui.bg.component',
+  color: 'colors.ui.fg.subtle',
+  boxShadow: 'shadows.elevation-flyout',
+  mt: '.25rem',
+});
+
+export const selectItemStyles = css({
+  position: 'relative',
+  display: 'flex',
+  width: '100%',
+  cursor: 'pointer',
+  userSelect: 'none',
+  alignItems: 'center',
+  borderRadius: 'sm',
+  py: '.25rem',
+  pl: '.5rem',
+  fontSize: 'sm',
+  outline: 'none',
+  '&:hover': {
+    bg: 'colors.ui.bg.highlight',
+    color: 'colors.ui.fg.base',
+  },
+  '&[data-disabled]': {
+    pointerEvents: 'none',
+    opacity: 0.5,
+    color: 'colors.ui.fg.disabled'
   },
 });
 
-export const selectSeparatorStyles = cva({
-  base: {
-    mx: '-4px',
-    my: '4px',
-    height: '1px',
-    bg: 'muted',
-  },
+export const selectLabelStyles = css({
+  px: '.5rem',
+  py: '.375rem',
+  fontSize: 'sm',
+  fontWeight: 'semibold',
+  color: 'colors.ui.fg.muted'
+});
+
+export const selectSeparatorStyles = css({
+  mx: '-.25rem',
+  my: '.25rem',
+  height: '1px',
+  bg: 'colors.ui.border.base',
 });
 
 
@@ -132,7 +128,7 @@ export const Select: React.FC<SelectProps> = ({ value, placeholder, children }) 
   return (
     <div ref={selectRef} className={css({ position: 'relative' })}>
       <div
-        className={selectTriggerStyles()}
+        className={selectTriggerStyles}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className={css({ textTransform: 'uppercase' })}>{value || placeholder}</span>
@@ -143,7 +139,7 @@ export const Select: React.FC<SelectProps> = ({ value, placeholder, children }) 
         )}
       </div>
       {isOpen && (
-        <div className={selectContentStyles()}>
+        <div className={selectContentStyles}>
           {children}
         </div>
       )}
@@ -166,7 +162,7 @@ export const SelectItem: React.FC<SelectItemProps> = ({ value, children }) => {
 
   return (
     <div
-      className={selectItemStyles()}
+      className={selectItemStyles}
       onClick={() => onSelect(value)}
     >
       {children}
@@ -180,11 +176,11 @@ export const SelectItem: React.FC<SelectItemProps> = ({ value, children }) => {
 };
 
 export const SelectLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className={selectLabelStyles()}>{children}</div>
+  <div className={selectLabelStyles}>{children}</div>
 );
 
 export const SelectSeparator: React.FC = () => (
-  <div className={selectSeparatorStyles()} />
+  <div className={selectSeparatorStyles} />
 );
 
 interface SelectContextType {

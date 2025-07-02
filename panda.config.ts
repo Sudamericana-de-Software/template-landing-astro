@@ -1,6 +1,7 @@
 import { defineConfig } from "@pandacss/dev";
 import { colorsTokens, keyframes, animationStyles, shadowsTokens } from "./src/style/theme";
 import { typography } from "./src/style/tokens/typography";
+import { containerPattern } from "./src/style/patterns/container";
 
 export default defineConfig({
   preflight: true,
@@ -21,18 +22,8 @@ export default defineConfig({
   },
   patterns: {
     extend: {
-      container: {
-        transform(props) {
-          // Definimos nuevos valores predeterminados
-          return {
-            position: 'relative',
-            width: '100%',
-            maxWidth: 'calc(100vw - 100px)',
-            mx: 'auto',
-            ...props         // incluir cualquier otra propiedad pasada
-          }
-        },
-      }
+      container: containerPattern
+      
     }
   },
   jsxFramework: 'react',

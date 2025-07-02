@@ -42,18 +42,13 @@ export default function ThemeSwitcher() {
 
   return (
     <Button
+      variant="ghost"
       onClick={toggleTheme}
       aria-label="Toggle theme"
       className={css({
-        shadow: 'none',
-        border: 'none',
-        transition: 'all 0.2s',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'navText',
-        padding: '1',
-        borderRadius: 'md',
+        _hover:{
+          bg:'none'
+        }
       })}
     >
       {icon}

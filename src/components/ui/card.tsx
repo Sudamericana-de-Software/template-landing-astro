@@ -97,7 +97,7 @@ export const CardDescription = ({
     className={cx(
       css({
         fontSize: "sm",
-        color: "grey",
+        color: "blue.500",
       }),
       className
     )}

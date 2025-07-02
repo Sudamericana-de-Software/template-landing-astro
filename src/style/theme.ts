@@ -30,34 +30,7 @@ export const colorsTokens = {
                         DEFAULT: { value: "var(--tag-blue-bg)" },
                         hover: { value: "var(--tag-blue-bg-hover)" },
                     },
-                },
-                orange: {
-                    text: { value: "var(--tag-orange-text)" },
-                    border: { value: "var(--tag-orange-border)" },
-                    icon: { value: "var(--tag-orange-icon)" },
-                    bg: {
-                        DEFAULT: { value: "var(--tag-orange-bg)" },
-                        hover: { value: "var(--tag-orange-bg-hover)" },
-                    },
-                },
-                green: {
-                    text: { value: "var(--tag-green-text)" },
-                    border: { value: "var(--tag-green-border)" },
-                    icon: { value: "var(--tag-green-icon)" },
-                    bg: {
-                        DEFAULT: { value: "var(--tag-green-bg)" },
-                        hover: { value: "var(--tag-green-bg-hover)" },
-                    },
-                },
-                purple: {
-                    text: { value: "var(--tag-purple-text)" },
-                    border: { value: "var(--tag-purple-border)" },
-                    icon: { value: "var(--tag-purple-icon)" },
-                    bg: {
-                        DEFAULT: { value: "var(--tag-purple-bg)" },
-                        hover: { value: "var(--tag-purple-bg-hover)" },
-                    },
-                },
+                }
             },
             bg: {
                 switch: {

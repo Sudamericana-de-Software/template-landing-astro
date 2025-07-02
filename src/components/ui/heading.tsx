@@ -4,6 +4,9 @@ const headingVariants = cva({
   base: {
     fontFamily: "sans",
     fontWeight: "medium",
+    padding: "0px",
+    marginBlockStart: '0',
+    marginBlockEnd: '1rem',
   },
   variants: {
     level: {

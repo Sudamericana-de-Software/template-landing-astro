@@ -13,16 +13,16 @@
     ::-webkit-scrollbar {
         height: 5px;
         width: 5px;
-        background: var(--colors-grey);
+        background: var(--fg-on-inverted);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: var(--colors-sasf-white);
+        background: var(--bg-base);
         -webkit-border-radius: 1ex;
     }
 
     ::-webkit-scrollbar-corner {
-        background: var(--colors-grey);
+        background: var(--fg-on-inverted);
     }
 
     html {

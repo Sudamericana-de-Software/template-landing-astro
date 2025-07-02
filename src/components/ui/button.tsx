@@ -11,11 +11,10 @@ const buttonStyle = cva({
         rounded: "md",
         fontSize: "sm",
         fontWeight: "medium",
-        transition: "colors",
+        transition: 'background-color .15s ease, color .15s ease',
         _focusVisible: {
             outline: "none",
-            ring: "1px",
-            ringColor: "ring",
+            boxShadow: "shadows.borders-focus",
         },
         _disabled: {
             pointerEvents: "none",
@@ -31,47 +30,51 @@ const buttonStyle = cva({
     variants: {
         variant: {
             default: {
-                bg: "primary",
-                color: "primary-foreground",
-                boxShadow: "sm",
+                bg: "colors.ui.bg.interactive",
+                color: "colors.ui.fg.on.color",
+                boxShadow: "shadows.elevation-card-rest",
                 _hover: {
-                    bg: "primary/90",
+                    bg: "color-mix(in srgb, var(--bg-interactive) 92%, white 8%)",
                 },
             },
             destructive: {
-                bg: "destructive",
-                color: "destructive-foreground",
-                boxShadow: "sm",
+                bg: "colors.ui.button.danger",
+                color: "colors.ui.fg.on.color",
+                boxShadow: "shadows.elevation-card-rest",
                 _hover: {
-                    bg: "destructive/90",
+                    bg: "colors.ui.button.danger.hover",
                 },
             },
             outline: {
                 border: "1px solid",
-                borderColor: "input",
-                bg: "background",
-                boxShadow: "sm",
+                borderColor: "colors.ui.border.base",
+                bg: "colors.ui.bg.highlight",
+                boxShadow: "shadows.elevation-card-rest",
+                color: 'colors.ui.fg.base',
                 _hover: {
-                    bg: "accent",
-                    color: "accent-foreground",
+                    bg: "colors.ui.bg.highlight.hover",
+                    color: "colors.ui.fg.interactive",
                 },
             },
             secondary: {
-                bg: "secondary",
-                color: "secondary-foreground",
-                boxShadow: "sm",
+                bg: "colors.ui.button.neutral",
+                color: "colors.ui.fg.base",
+                boxShadow: "shadows.elevation-card-rest",
                 _hover: {
-                    bg: "secondary/80",
+                    bg: "colors.ui.button.neutral.hover",
                 },
             },
             ghost: {
+                bg: "transparent",
+                color: "colors.ui.fg.base",
                 _hover: {
-                    bg: "accent",
-                    color: "accent-foreground",
+                    bg: "colors.ui.bg.highlight",
+                    color: "colors.ui.fg.interactive",
                 },
             },
             link: {
-                color: "primary",
+                bg: "transparent",
+                color: "colors.ui.fg.interactive",
                 textUnderlineOffset: "4",
                 _hover: {
                     textDecoration: "underline",

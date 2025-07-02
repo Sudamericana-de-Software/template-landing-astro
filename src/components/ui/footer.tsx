@@ -109,8 +109,8 @@ export default function Footer({ links, footer }: footerProps) {
 
 export const footerStyles = css({
     position: "relative",
-    bg: "gray.900",
-    color: "white",
+    bg: "colors.ui.bg.overlay",
+    color: "colors.ui.contrast.fg.primary",
     padding: "3rem 0rem 1rem",
     transition: "all 0.2s",
 
@@ -120,7 +120,7 @@ export const footerStyles = css({
         marginBottom: "1.5rem",
     },
     "& .description": {
-        color: "#a1a1a1",
+        color: "colors.ui.fg.muted",
         fontSize: "0.9rem",
         lineHeight: "1.6",
         maxWidth: "25rem",
@@ -130,7 +130,7 @@ export const footerStyles = css({
         gap: "1rem",
         marginTop: "1.5rem",
         "& .socialLink": {
-            color: "white",
+            color: "colors.ui.contrast.fg.primary",
             transition: "opacity 0.2s",
 
             _hover: {
@@ -143,15 +143,19 @@ export const footerStyles = css({
         padding: 0,
         margin: 0,
         "& .navLink": {
-            color: "#a1a1a1",
+            color: "colors.ui.fg.muted",
             textDecoration: "none",
             fontSize: "0.9rem",
             lineHeight: "2",
             transition: "color 0.2s",
 
             _hover: {
-                color: "white",
+                color: "colors.ui.fg.base",
             },
+            _focusVisible:{
+                outline: "none",
+                boxShadow: "shadows.borders-focus",
+            }
         },
     },
     "& .copyright": {
@@ -159,11 +163,12 @@ export const footerStyles = css({
         gap: "1rem",
         justifyContent: "center",
         textAlign: "center",
-        color: "#666",
+        color: "colors.ui.fg.subtle",
         fontSize: "0.8rem",
         paddingTop: "2rem",
         marginTop: "2rem",
-        borderTop: "1px solid #333",
+        borderTop: "1px solid",
+        borderColor: "colors.ui.border.base",
         paddingRight: "1vh",
         pl: "1rem",
         pr: "1rem"
